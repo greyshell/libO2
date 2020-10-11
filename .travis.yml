@@ -4,10 +4,15 @@ sudo: required
 
 before_install:
   - sudo apt-get update
+  - sudo apt-get install cppcheck -y
 
 script:
   - cd test/test_dumb_example/
   - make test
+
+after_script:
+  - cd test/test_dumb_example/
+  - make cppcheck
 
 notifications:
   email:
