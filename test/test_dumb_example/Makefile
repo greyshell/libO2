@@ -46,7 +46,7 @@ fuzz-build:
 		-o $(PATHFUZZ)/fuzz_dumb_example
 
 fuzz: $(PATHFUZZ) fuzz-build
-	afl-fuzz -i $(PATHFUZZ)/in -o $(PATHFUZZ)/out -m none $(PATHFUZZ)/fuzz_dumb_example
+	timeout 30s afl-fuzz -i $(PATHFUZZ)/in -o $(PATHFUZZ)/out -m none $(PATHFUZZ)/fuzz_dumb_example
 
 cppcheck: $(BUILD_PATHS)
 	cppcheck $(PATHS)/dumb_example.c > $(PATHR)/cppcheck_results.txt
