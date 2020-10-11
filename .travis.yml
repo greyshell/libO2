@@ -1,0 +1,15 @@
+language: c
+
+sudo: required
+
+before_install:
+  - sudo apt-get update
+
+script:
+  - cd test/test_dumb_example/
+  - make test
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
