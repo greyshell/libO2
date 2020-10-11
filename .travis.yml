@@ -2,7 +2,7 @@ language: c
 sudo: required
 before_install:
 - sudo apt-get update
-- sudo apt-get install cppcheck -y
+- sudo apt-get install cppcheck pastebinit -y
 - sudo .travis/install_afl.sh
 script:
 - cd test/test_dumb_example/
@@ -10,7 +10,7 @@ script:
 after_script:
 - cd test/test_dumb_example/
 - make cppcheck ; cat build/results/cppcheck_results.txt
-- make fuzz > /dev/null; ls build/fuzz/out/crashes/id*
+- make fuzz > /dev/null; ls build/fuzz/out/crashes/id*; .travis/upload-crash.sh
 notifications:
   email:
     on_success: change
