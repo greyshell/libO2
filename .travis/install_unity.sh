@@ -7,4 +7,5 @@ mkdir lib
 # shellcheck disable=SC2164
 cd lib
 git clone https://github.com/ThrowTheSwitch/Unity.git
+chmod -R 777 Unity\
 
