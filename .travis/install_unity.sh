@@ -4,5 +4,7 @@
 # description: install Unity - C unit testing framework
 
 mkdir lib
-git clone https://github.com/ThrowTheSwitch/Unity.git lib/
+# shellcheck disable=SC2164
+cd lib
+git clone https://github.com/ThrowTheSwitch/Unity.git
 
