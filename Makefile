@@ -6,8 +6,7 @@ PATHS = src/
 PATHT = test/
 
 PATH_DEBUG = test/make_build_debug
-PATH_TEST = test/make_build_debug/results_$(TEST_LIB)
-PATH_FUZZ = test/make_build_debug/results_$(TEST_LIB)/fuzz
+PATH_FUZZ = test/make_build_debug/fuzz/$(TEST_LIB)
 
 PATHB = test/make_build_debug/unittest_build/
 PATHD = test/make_build_debug/unittest_build/depends/
@@ -15,7 +14,7 @@ PATHO = test/make_build_debug/unittest_build/objs/
 PATHR = test/make_build_debug/unittest_build/results/
 
 
-BUILD_PATHS = $(PATH_DEBUG) $(PATH_TEST) $(PATHB) $(PATHD) $(PATHO) $(PATHR) $(PATH_FUZZ)
+BUILD_PATHS = $(PATH_DEBUG) $(PATHB) $(PATHD) $(PATHO) $(PATHR) $(PATH_FUZZ)
 
 SRCT = $(wildcard $(PATHT)*.c)
 
@@ -58,11 +57,11 @@ fuzz: fuzz-build
 		-m none $(PATH_FUZZ)/fuzz_dumb_example
 
 cppcheck: $(BUILD_PATHS)
-	cppcheck $(PATHS)/$(TEST_LIB).c --output-file=$(PATH_TEST)/cppcheck_report.txt
+	cppcheck $(PATHS)/*.c --output-file=$(PATH_DEBUG)/cppcheck_report.txt
 
 cppcheck-report: cppcheck
 	@echo "-----------------------\nCPPCHECK REPORT:\n-----------------------"
-	@cat $(PATH_TEST)/cppcheck_report.txt
+	@cat $(PATH_DEBUG)/cppcheck_report.txt
 
 $(PATHR)%.txt: $(PATHB)%.$(TARGET_EXTENSION)
 	-./$< > $@ 2>&1
@@ -84,9 +83,6 @@ $(PATHD)%.d:: $(PATHT)%.c
 
 $(PATH_DEBUG):
 	$(MKDIR) $(PATH_DEBUG)
-
-$(PATH_TEST):
-	$(MKDIR) $(PATH_TEST)
 
 $(PATHB):
 	$(MKDIR) $(PATHB)
@@ -110,7 +106,7 @@ clean:
 	$(CLEANUP) $(PATHB)*.$(TARGET_EXTENSION)
 	$(CLEANUP) $(PATHR)*.txt
 	$(CLEANUP_DIR) $(PATH_FUZZ)
-	$(CLEANUP) $(PATH_TEST)/cppcheck_report.txt
+	$(CLEANUP) $(PATH_DEBUG)/cppcheck_report.txt
 
 .PRECIOUS: $(PATHB)test_%.$(TARGET_EXTENSION)
 .PRECIOUS: $(PATHD)%.d

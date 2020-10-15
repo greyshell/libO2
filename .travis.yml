@@ -5,12 +5,11 @@ before_install:
 - sudo apt-get install cppcheck pastebinit -y
 - sudo .travis/install_afl.sh
 script:
-- cd test/test_dumb_example/
 - make test
 after_script:
-- cd test/test_dumb_example/
-- make cppcheck ; cat build/results/cppcheck_results.txt
-- make fuzz > /dev/null; ls build/fuzz/out/crashes/id*; ../../.travis/upload_crash_report.sh
+- make cppcheck; cat build/results/cppcheck_results.txt
+- make fuzz > /dev/null; find ../test/make_build_debug/fuzz/ -iname "id*" | grep ".*/crashes/*; \
+  .travis/upload_crash_report.sh
 notifications:
   email:
     on_success: change
