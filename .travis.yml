@@ -7,7 +7,7 @@ before_install:
 script:
 - make test
 after_script:
-- make cppcheck; cat build/results/cppcheck_results.txt
+- make cppcheck; cat test/make_build_debug/cppcheck_report.txt
 - make fuzz > /dev/null; find ../test/make_build_debug/fuzz/ -iname "id*" | grep ".*/crashes/*; \
   .travis/upload_crash_report.sh
 notifications:
