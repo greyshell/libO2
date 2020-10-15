@@ -1,5 +1,5 @@
 TEST_LIB=dumb_example
-FUZZ_TIME=10s
+FUZZ_TIME=45s
 
 PATHU = lib/Unity/src/
 PATHS = src/
