@@ -57,7 +57,7 @@ fuzz: fuzz-build
 		-m none $(PATH_FUZZ)/fuzz_dumb_example
 
 cppcheck: $(BUILD_PATHS)
-	cppcheck $(PATHS)/*.c --output-file=$(PATH_DEBUG)/cppcheck_report.txt
+	cppcheck $(PATHS)*.c --output-file=$(PATH_DEBUG)/cppcheck_report.txt
 
 cppcheck-report: cppcheck
 	@echo "-----------------------\nCPPCHECK REPORT:\n-----------------------"

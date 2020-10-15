@@ -2,14 +2,15 @@ language: c
 sudo: required
 before_install:
 - sudo apt-get update
-- sudo apt-get install cppcheck pastebinit -y
+- sudo apt-get install cppcheck less  -y
 - sudo .travis/install_afl.sh
 - sudo .travis/install_unity.sh
 script:
 - make test
 after_script:
 - make cppcheck; cat test/make_build_debug/cppcheck_report.txt
-- make fuzz > /dev/null; find ../test/make_build_debug/fuzz/ -iname "id*" | grep ".*/crashes/*; .travis/upload_crash_report.sh
+- make fuzz > /dev/null; find test/make_build_debug/fuzz/ -iname "id*" | grep ".*/crashes/*";
+  .travis/upload_crash_report.sh
 notifications:
   email:
     on_success: change
