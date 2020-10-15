@@ -1,8 +1,7 @@
-#include "../../lib/Unity/src/unity.h"
-#include "../../src/dumb_example.h"
-
 #include <string.h>
 #include <stdlib.h>
+#include "../lib/Unity/src/unity.h"
+#include "../include/dumb_example.h"
 
 void setUp(void) {
     // set stuff up here

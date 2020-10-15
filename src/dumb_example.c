@@ -1,4 +1,4 @@
-#include "dumb_example.h"
+#include "../include/dumb_example.h"
 
 #include <string.h>
 

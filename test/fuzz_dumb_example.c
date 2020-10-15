@@ -1,9 +1,8 @@
-#include "../../src/dumb_example.h"
-
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "../include/dumb_example.h"
 
 #define SZ 10000
 
