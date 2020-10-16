@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # author: greyshell
-# description: upload the cppcheck report to the slack
+# description: upload the crash report to #dev-lib02
 
 
-curl -XPOST --data "payload={\"text\": \"CPPCheck Report: $(xxd $f | pastebinit)\"}" \
-    $SLACK_WEBHOOK_URL
+curl -XPOST --data "payload={\"text\": \"\`CPPCheck\` report: $(cat ../test/make_build_debug/cppcheck_report.txt | \
+    pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
