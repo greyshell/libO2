@@ -1,7 +1,7 @@
 language: c
 sudo: required
 env:
-  matrix;
+  matrix:
     - TEST_LIB=dummy_example
     - TEST_LIB=stack_singly_linkedlist_int
 before_install:
@@ -13,8 +13,6 @@ before_install:
 - sudo add-apt-repository -y ppa:deadsnakes/ppa
 - sudo apt update
 - sudo apt install -y python3.7
-install:
-  - pip3.7 install -r requrements.txt
 before_script:
   - echo 'parse git comment'
 script:
