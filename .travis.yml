@@ -2,17 +2,13 @@ language: c
 sudo: required
 jobs:
   include:
-    - env: TEST_LIB=dummy_example
+    - env: TEST_LIB=dumb_example
     - env: TEST_LIB=stack_singly_linkedlist_int
 before_install:
 - sudo apt-get update
 - sudo apt-get install cppcheck less  -y
 - sudo .travis/install_afl.sh
 - sudo .travis/install_unity.sh
-- sudo apt install -y software-properties-common
-- sudo add-apt-repository -y ppa:deadsnakes/ppa
-- sudo apt update
-- sudo apt install -y python3.7
 before_script:
 - make cppcheck TEST_LIB=${TEST_LIB}; cat test/make_build_debug/cppcheck_report_${TEST_LIB}.txt;
   .travis/upload_cppcheck_report.sh
