@@ -1,5 +1,9 @@
 language: c
 sudo: required
+env:
+  matrix;
+    - TEST_LIB=dummy_example
+    - TEST_LIB=stack_singly_linkedlist_int
 before_install:
 - sudo apt-get update
 - sudo apt-get install cppcheck less  -y
@@ -14,10 +18,10 @@ install:
 before_script:
   - echo 'parse git comment'
 script:
-- make test
+- make test TEST_LIB=$(TEST_LIB)
 after_script:
-- make cppcheck; cat test/make_build_debug/cppcheck_report.txt; .travis/upload_cppcheck_report.sh
-- make fuzz > /dev/null; find test/make_build_debug/fuzz/ -iname "id*" | grep ".*/crashes/*"; .travis/upload_crash_report.sh
+- make cppcheck TEST_LIB=$(TEST_LIB); cat test/make_build_debug/cppcheck_report.txt; .travis/upload_cppcheck_report.sh
+- make fuzz TEST_LIB=$(TEST_LIB)> /dev/null; find test/make_build_debug/fuzz/ -iname "id*" | grep ".*/crashes/*"; .travis/upload_crash_report.sh
 notifications:
   email:
     on_success: change

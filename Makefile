@@ -54,14 +54,14 @@ fuzz-build: $(BUILD_PATHS)
 
 fuzz: fuzz-build
 	timeout $(FUZZ_TIME) afl-fuzz -i $(PATH_FUZZ)/in -o $(PATH_FUZZ)/out \
-		-m none $(PATH_FUZZ)/fuzz_dumb_example
+		-m none $(PATH_FUZZ)/fuzz_$(TEST_LIB)
 
 cppcheck: $(BUILD_PATHS)
-	cppcheck $(PATHS)*.c > $(PATH_DEBUG)/cppcheck_report.txt
+	cppcheck $(PATHS)/$(TEST_LIB).c > $(PATH_DEBUG)/cppcheck_report_$(TEST_LIB).txt
 
 cppcheck-report: cppcheck
 	@echo "-----------------------\nCPPCHECK REPORT:\n-----------------------"
-	@cat $(PATH_DEBUG)/cppcheck_report.txt
+	@cat $(PATH_DEBUG)/cppcheck_report_$(TEST_LIB).txt
 
 $(PATHR)%.txt: $(PATHB)%.$(TARGET_EXTENSION)
 	-./$< > $@ 2>&1
@@ -106,7 +106,7 @@ clean:
 	$(CLEANUP) $(PATHB)*.$(TARGET_EXTENSION)
 	$(CLEANUP) $(PATHR)*.txt
 	$(CLEANUP_DIR) $(PATH_FUZZ)
-	$(CLEANUP) $(PATH_DEBUG)/cppcheck_report.txt
+	$(CLEANUP) $(PATH_DEBUG)/cppcheck_report*.txt
 
 .PRECIOUS: $(PATHB)test_%.$(TARGET_EXTENSION)
 .PRECIOUS: $(PATHD)%.d
