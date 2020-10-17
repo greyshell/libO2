@@ -16,7 +16,7 @@ script:
 - make test TEST_LIB=${TEST_LIB}
 after_script:
 - make fuzz TEST_LIB=${TEST_LIB}> /dev/null; find test/make_build_debug/fuzz/${TEST_LIB}/ -iname \
-  "id*" | grep ".*/crashes/*"; .travis/upload_crash_report.sh
+    "id*" | grep ".*/crashes/*"; .travis/upload_crash_report.sh; ./travis/handle_fuzz_status.sh
 notifications:
   email:
     on_success: change
