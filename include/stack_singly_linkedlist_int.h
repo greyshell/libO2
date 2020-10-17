@@ -3,19 +3,19 @@
  * description: stack
  * */
 
-#ifndef STACK_H__
-#define STACK_H__
+#ifndef STACK_SINGLY_LINKEDLIST_INT_H__
+#define STACK_SINGLY_LINKEDLIST_INT_H__
 
 #include <glob.h>
 #include "stdbool.h"
 
-typedef struct list {
+typedef struct singly_linked_list {
     int data;
-    struct list *next;
-} stack_node;
+    struct singly_linked_list *next;
+} node;
 
 typedef struct {
-    stack_node *top;
+    node *top;
     size_t size;
 } stack;
 
@@ -35,4 +35,4 @@ bool delete_stack(stack *);
 
 void display_stack(stack *);
 
-#endif // STACK_H__
+#endif

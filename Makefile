@@ -1,5 +1,5 @@
 TEST_LIB=dumb_example
-FUZZ_TIME=45s
+FUZZ_TIME=15s
 
 PATHU = lib/Unity/src/
 PATHS = src/
@@ -16,7 +16,7 @@ PATHR = test/make_build_debug/unittest_build/results/
 
 BUILD_PATHS = $(PATH_DEBUG) $(PATHB) $(PATHD) $(PATHO) $(PATHR) $(PATH_FUZZ)
 
-SRCT = $(wildcard $(PATHT)*.c)
+SRCT = $(wildcard $(PATHT)/$(TEST_LIB).c)
 
 CLEANUP=rm -f
 CLEANUP_DIR=rm -rf
@@ -29,7 +29,7 @@ DEPEND=gcc -MM -MG -MF
 CFLAGS=-I. -I$(PATHU) -I$(PATHS) -Dtest
 COMPILE_AFL=AFL_USE_ASAN=1 afl-gcc
 
-RESULTS = $(patsubst $(PATHT)test_%.c,$(PATHR)test_%.txt,$(SRCT) )
+RESULTS = $(PATHR)test_$(TEST_LIB).txt
 
 PASSED = `grep -s PASS $(PATHR)*.txt`
 FAIL = `grep -s FAIL $(PATHR)*.txt`
@@ -49,7 +49,7 @@ test: $(BUILD_PATHS) $(RESULTS)
 	@echo "\nDONE"
 
 fuzz-build: $(BUILD_PATHS)
-	$(COMPILE_AFL) $(CFLAGS) $(PATHT)/fuzz_$(TEST_LIB).c $(PATHS)/*.c \
+	$(COMPILE_AFL) $(CFLAGS) $(PATHT)/fuzz_$(TEST_LIB).c $(PATHS)/$(TEST_LIB).c \
         -o $(PATH_FUZZ)/fuzz_$(TEST_LIB)
 
 fuzz: fuzz-build

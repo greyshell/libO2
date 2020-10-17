@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stdbool.h"
-#include "../include/stack_sll_int.h"
+#include "../include/stack_singly_linkedlist_int.h"
 
 void initialize_stack(stack *s) {
     /*
@@ -45,10 +45,10 @@ bool push(stack *s, int data) {
      * time complexity: O(1)
      * space complexity: O(1)
      */
-    stack_node *temp_node;
+    node *temp_node;
 
     // create a new node
-    temp_node = (stack_node *) malloc(sizeof(stack_node));
+    temp_node = (node *) malloc(sizeof(node));
     if (temp_node == NULL) {
         return false;
     }
@@ -67,7 +67,7 @@ bool pop(stack *s, int *out_data) {
      * time complexity: O(1)
      * space complexity: O(1)
      */
-    stack_node *temp_node;
+    node *temp_node;
     // check if the stack is empty
     if (is_empty_stack(s) == true) {
         printf("stack is empty \n");
@@ -122,7 +122,7 @@ void display_stack(stack *s) {
      * time complexity: O(n)
      * space complexity: O(1)
      */
-    stack_node *curr_node;
+    node *curr_node;
     curr_node = s->top;
 
     while (curr_node != NULL) {

@@ -5,6 +5,14 @@ before_install:
 - sudo apt-get install cppcheck less  -y
 - sudo .travis/install_afl.sh
 - sudo .travis/install_unity.sh
+- sudo apt install -y software-properties-common
+- sudo add-apt-repository -y ppa:deadsnakes/ppa
+- sudo apt update
+- sudo apt install -y python3.7
+install:
+  - pip3.7 install -r requrements.txt
+before_script:
+  - echo 'parse git comment'
 script:
 - make test
 after_script:
