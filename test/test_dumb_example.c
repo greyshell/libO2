@@ -16,7 +16,7 @@ void test_vuln_function_should_copy_string(void)
     char buf[] = "Hello World!";
     char *res = vuln_function(buf, strlen(buf));
     printf("Output: %s\n", res);
-    TEST_ASSERT_EQUAL_STRING(buf, res);
+    TEST_ASSERT_EQUAL_STRING("KK", res);
     free(res);
 }
 
