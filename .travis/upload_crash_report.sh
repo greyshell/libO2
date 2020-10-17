@@ -5,6 +5,6 @@
 
 for f in $(find test/make_build_debug/fuzz/${TEST_LIB}/ -iname "id*" | grep ".*/crashes/*")
 do
-  curl -XPOST --data "payload={\"text\": \"> \`Crash\` found: $(xxd $f | \
+  curl -XPOST --data "payload={\"text\": \"> \`Crash\` found in ${TEST_LIB}: $(xxd $f | \
     pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
 done
