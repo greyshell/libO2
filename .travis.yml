@@ -23,6 +23,10 @@ script:
 
 after_success:
  - script/notify_success.sh
+
+after_failure:
+ - script/notify_failure.sh
+
 after script:
 - make cppcheck TEST_LIB=${TEST_LIB}; script/upload_cppcheck_report.sh
 - make clean-all
