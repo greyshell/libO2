@@ -4,8 +4,9 @@
 language: c
 
 jobs:
- include:
+ exclude:
   - env: TEST_LIB=dumb_example
+ include:
   - env: TEST_LIB=stack_singly_linkedlist_int
 
 before_install:
