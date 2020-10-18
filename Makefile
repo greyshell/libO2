@@ -1,20 +1,20 @@
 TEST_LIB=dumb_example
-FUZZ_TIME=15s
+FUZZ_TIME=10s
 
 PATHU = lib/Unity/src/
 PATHS = src/
 PATHT = test/
+DEBUG_ROOT = $(PATHT)/debug/
 
-PATH_DEBUG = test/make_build_debug
-PATH_FUZZ = test/make_build_debug/fuzz/$(TEST_LIB)
+PATH_DEBUG = $(DEBUG_ROOT)$(TEST_LIB)/
+PATH_FUZZ = $(PATH_DEBUG)/fuzz_build/
+PATHB = $(PATH_DEBUG)/unittest_build/
+PATHD = $(PATHB)/depends/
+PATHO = $(PATHB)/objs/
+PATHR = $(PATHB)/results/
 
-PATHB = test/make_build_debug/unittest_build/
-PATHD = test/make_build_debug/unittest_build/depends/
-PATHO = test/make_build_debug/unittest_build/objs/
-PATHR = test/make_build_debug/unittest_build/results/
 
-
-BUILD_PATHS = $(PATH_DEBUG) $(PATHB) $(PATHD) $(PATHO) $(PATHR) $(PATH_FUZZ)
+BUILD_PATHS = $(DEBUG_ROOT) $(PATH_DEBUG) $(PATHB) $(PATHD) $(PATHO) $(PATHR) $(PATH_FUZZ)
 
 SRCT = $(wildcard $(PATHT)/$(TEST_LIB).c)
 
@@ -38,6 +38,8 @@ IGNORE = `grep -s IGNORE $(PATHR)*.txt`
 
 .PHONY: clean
 .PHONY: test
+
+test-all: cppcheck test fuzz
 
 test: $(BUILD_PATHS) $(RESULTS)
 	@echo "-----------------------\nIGNORES:\n-----------------------"
@@ -81,6 +83,9 @@ $(PATHO)%.o:: $(PATHU)%.c $(PATHU)%.h
 $(PATHD)%.d:: $(PATHT)%.c
 	$(DEPEND) $@ $<
 
+$(DEBUG_ROOT):
+	$(MKDIR) $(DEBUG_ROOT)
+
 $(PATH_DEBUG):
 	$(MKDIR) $(PATH_DEBUG)
 
@@ -102,11 +107,10 @@ $(PATH_FUZZ):
 	@echo abc > $(PATH_FUZZ)/in/t1
 
 clean:
-	$(CLEANUP) $(PATHO)*.o
-	$(CLEANUP) $(PATHB)*.$(TARGET_EXTENSION)
-	$(CLEANUP) $(PATHR)*.txt
-	$(CLEANUP_DIR) $(PATH_FUZZ)
-	$(CLEANUP) $(PATH_DEBUG)/cppcheck_report*.txt
+	$(CLEANUP_DIR) $(PATH_DEBUG)
+
+clean-all:
+	$(CLEANUP_DIR) $(DEBUG_ROOT)
 
 .PRECIOUS: $(PATHB)test_%.$(TARGET_EXTENSION)
 .PRECIOUS: $(PATHD)%.d
