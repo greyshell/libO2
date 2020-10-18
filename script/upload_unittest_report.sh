@@ -9,6 +9,6 @@ then
   # upload the report to #dev-lib02
   curl -XPOST --data "payload={\"text\": \"> *Unittest* report for \`${TEST_LIB}\`: \
    $(pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
-  exit 0
+  exit $FAILED_CASES
 fi
 exit $FAILED_CASES
