@@ -14,9 +14,7 @@ echo abc > fuzz_afl/lib_name/in/t1
 
 ```
 AFL_USE_ASAN=1 afl-gcc test_lib_name_fuzz.c ../liquid_oxygen/lib_name.c -o ../fuzz_alf/lib_name/lib_name_afl
-```
-12345
-    
+``` 
 - execute the binary to check that runs properly
 - run the `afl-gcc` fuzzer.
 
