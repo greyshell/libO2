@@ -10,10 +10,10 @@ jobs:
   - env: TEST_LIB=stack_singly_linkedlist_int
 
 before_install:
-- sudo apt-get update
-- sudo apt-get install cppcheck less  -y
-- sudo .travis/install_afl.sh
-- sudo .travis/install_unity.sh
+ - echo "running before_install phase"
+
+install:
+ - .travis/install_dependencies.sh
 
 before_script:
 - echo "running before_script phase"
