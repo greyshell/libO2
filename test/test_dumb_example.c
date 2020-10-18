@@ -11,20 +11,22 @@ void tearDown(void) {
     // clean stuff up here
 }
 
-void test_vuln_function_should_copy_string(void)
-{
+// positive testcases
+void test_vuln_function_should_copy_string(void){
     char buf[] = "Hello World!";
     char *res = vuln_function(buf, strlen(buf));
     printf("Output: %s\n", res);
-    TEST_ASSERT_EQUAL_STRING("KK", res);
+    TEST_ASSERT_EQUAL_STRING("H", res);
     free(res);
 }
 
-void test_vuln_function_should_not_copy_string(void)
-{
+// negative testcases
+void test_vuln_function_should_not_copy_string(void){
     char buf[] = "";
-    char negative[] = "KOOL";
-    TEST_ASSERT_EQUAL_STRING(negative, vuln_function(buf, strlen(buf)));
+    char tmp_buff[] = "KOOL";
+    char *res = vuln_function(buf, strlen(buf));
+    TEST_ASSERT_EQUAL_STRING(NULL, res);
+    free(res);
 }
 
 int main(void)
