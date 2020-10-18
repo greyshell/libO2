@@ -34,7 +34,7 @@ after script:
 notifications:
  email:
   recipients:
-  - ${EMAIL}
+   - ${EMAIL}
   on_success: change
   on_failure: always
  
