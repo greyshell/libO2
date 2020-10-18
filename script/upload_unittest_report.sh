@@ -3,7 +3,7 @@
 # author: greyshell
 # description: handle the unittest status
 
-FAILED_CASES=$(make test TEST_LIB=${TEST_LIB} | grep -w "FAIL:" | wc -l)
+FAILED_CASES=$(grep -w "FAIL:" test/debug/${TEST_LIB}/unittest_build/results/test_${TEST_LIB}.txt | wc -l)
 if [ $FAILED_CASES -gt 0 ]
 then
   # upload the report to #dev-lib02
