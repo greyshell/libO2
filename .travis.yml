@@ -10,10 +10,10 @@ jobs:
   - env: TEST_LIB=stack_singly_linkedlist_int
 
 before_install:
- - echo "running before_install phase"
+ - .travis/install_dependencies.sh
 
 install:
- - .travis/install_dependencies.sh
+ - echo "install phase"
 
 before_script:
 - echo "running before_script phase"
