@@ -21,6 +21,8 @@ script:
 - make test TEST_LIB=${TEST_LIB}; script/upload_unittest_report.sh
 - make fuzz TEST_LIB=${TEST_LIB}> /dev/null; script/upload_crash_report.sh
 
+after_success:
+ - script/notify_success.sh
 after script:
 - make cppcheck TEST_LIB=${TEST_LIB}; script/upload_cppcheck_report.sh
 - make clean-all
