@@ -4,13 +4,11 @@
 language: c
 
 jobs:
-  exclude:
-    - env: TEST_LIB=dumb_example
   include:
     - env: TEST_LIB=stack_singly_linkedlist_int
 
 before_install:
-  - echo "before install phase"
+  - skip
 
 install:
   - sudo apt-get update
@@ -19,7 +17,7 @@ install:
   - sudo .travis/install_unity.sh
 
 before_script:
-  - echo "before_script phase"
+  - skip
 
 script:
   - make test TEST_LIB=${TEST_LIB}; script/upload_unittest_report.sh

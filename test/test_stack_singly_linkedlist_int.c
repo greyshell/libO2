@@ -1,36 +1,96 @@
+/*
+ * author: greyshell
+ * description: unittest case
+ * */
+
 #include <string.h>
-#include <stdlib.h>
 #include "../lib/Unity/src/unity.h"
 #include "../include/stack_singly_linkedlist_int.h"
 
+// create the data structure
+stack s;
+
 void setUp(void) {
-    // set stuff up here
+    // initialize the data structure
+    initialize_stack(&s);
 }
 
 void tearDown(void) {
-    // clean stuff up here
-}
-
-void test_push(void)
-{
-    stack s;
-    int data = 10;
-    int out_data = 0;
-    bool return_type;
-    initialize_stack(&s);
-    return_type = push(&s, data);
-    TEST_ASSERT_EQUAL_INT(true, return_type);
-
-    return_type = peek(&s, &out_data);
-    TEST_ASSERT_EQUAL_INT(data, out_data);
+    // delete the data structure
     delete_stack(&s);
+}
+
+void test_positive_case01(void){
+    /*
+     * test ops: push -> push -> peek
+     */
+    int out_data = 0;
+
+    TEST_ASSERT_EQUAL_INT(true, push(&s, 10));
+    TEST_ASSERT_EQUAL_INT(true, push(&s, 90));
+    TEST_ASSERT_EQUAL_INT(true, peek(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(90, out_data);
+}
+
+void test_positive_case02(void){
+    /*
+     * test ops: push -> push -> push -> pop -> peek
+     */
+    int out_data = 0;
+
+    TEST_ASSERT_EQUAL_INT(true, push(&s, 10));
+    TEST_ASSERT_EQUAL_INT(true, push(&s, 90));
+    TEST_ASSERT_EQUAL_INT(true, push(&s, 50));
+    TEST_ASSERT_EQUAL_INT(true, pop(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(50, out_data);
+    TEST_ASSERT_EQUAL_INT(true, peek(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(90, out_data);
+}
+
+void test_positive_case03(void){
+    /*
+     * test ops: get_stack_size -> push -> push -> get_stack_size -> pop -> get_stack_size
+     */
+    int out_data = 0;
+
+    TEST_ASSERT_EQUAL_INT(0, get_stack_size(&s));
+    TEST_ASSERT_EQUAL_INT(true, push(&s, 10));
+    TEST_ASSERT_EQUAL_INT(true, push(&s, 90));
+    TEST_ASSERT_EQUAL_INT(2, get_stack_size(&s));
+    TEST_ASSERT_EQUAL_INT(true, pop(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(1, get_stack_size(&s));
 
 }
 
+void test_negative_case01(void) {
+    /*
+     * test ops: peek -> pop
+     */
+    int out_data = 0;
+    TEST_ASSERT_EQUAL_INT(false, peek(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(0, out_data);
+    TEST_ASSERT_EQUAL_INT(false, pop(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(0, out_data);
+}
 
-int main(void)
-{
+void test_negative_case02(void) {
+    /*
+     * test ops: pop -> peek
+     */
+    int out_data = 0;
+    TEST_ASSERT_EQUAL_INT(false, pop(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(0, out_data);
+    TEST_ASSERT_EQUAL_INT(false, peek(&s, &out_data));
+    TEST_ASSERT_EQUAL_INT(0, out_data);
+}
+
+int main(void){
     UNITY_BEGIN();
-    RUN_TEST(test_push);
+    RUN_TEST(test_positive_case01);
+    RUN_TEST(test_positive_case02);
+    RUN_TEST(test_positive_case03);
+
+    RUN_TEST(test_negative_case01);
+    RUN_TEST(test_negative_case02);
     return UNITY_END();
 }

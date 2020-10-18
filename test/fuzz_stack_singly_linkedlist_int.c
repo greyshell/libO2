@@ -1,16 +1,13 @@
 /*
  * author: greyshell
- * description: fuzz the stack through AFL
+ * description: fuzz the stack api through AFL
  * */
-
-// make -f fuzz_lib_with_afl SRC_FLD=stack/tests WRAPPER_PROG=fuzzlib_stack LIB_FLD=stack LIB=stack
 
 #include <stdio.h>
 #include "stdbool.h"
 #include <stdint.h>
 #include <unistd.h>
 #include <string.h>
-#include <stdlib.h>
 #include "../include/stack_singly_linkedlist_int.h"
 
 // helper functions for fuzzing
