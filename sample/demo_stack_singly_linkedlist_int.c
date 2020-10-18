@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include "stdbool.h"
-#include "../../include/stack_singly_linkedlist_int.h"
+#include "../include/stack_singly_linkedlist_int.h"
 
 int main(void) {
     int data;

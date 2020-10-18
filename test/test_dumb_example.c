@@ -23,7 +23,8 @@ void test_vuln_function_should_copy_string(void)
 void test_vuln_function_should_not_copy_string(void)
 {
     char buf[] = "";
-    TEST_ASSERT_EQUAL_STRING(NULL, vuln_function(buf, strlen(buf)));
+    char negative[] = "KOOL";
+    TEST_ASSERT_EQUAL_STRING(negative, vuln_function(buf, strlen(buf)));
 }
 
 int main(void)
