@@ -1,5 +1,5 @@
 # author: greyshell
-# description: travis libO2 pipeline for unittest, afl-fuzzing, cppcheck
+# description: travis pipeline for unittest, afl-fuzzing, cppcheck
 
 language: c
 
@@ -10,17 +10,17 @@ jobs:
   - env: TEST_LIB=stack_singly_linkedlist_int
 
 before_install:
- - .travis/install_dependencies.sh
-
-install:
- - echo "install phase"
+ - sudo apt-get update
+ - sudo apt-get install cppcheck less  -y
+ - sudo .travis/install_afl.sh
+ - sudo .travis/install_unity.sh
 
 before_script:
-- echo "running before_script phase"
+ - echo "running before_script phase"
 
 script:
-- make test TEST_LIB=${TEST_LIB}; script/upload_unittest_report.sh
-- make fuzz TEST_LIB=${TEST_LIB}> /dev/null; script/upload_crash_report.sh
+ - make test TEST_LIB=${TEST_LIB}; script/upload_unittest_report.sh
+ - make fuzz TEST_LIB=${TEST_LIB}> /dev/null; script/upload_crash_report.sh
 
 after_success:
  - script/notify_success.sh
@@ -29,8 +29,8 @@ after_failure:
  - script/notify_failure.sh
 
 after script:
-- make cppcheck TEST_LIB=${TEST_LIB}; script/upload_cppcheck_report.sh
-- make clean-all
+ - make cppcheck TEST_LIB=${TEST_LIB}; script/upload_cppcheck_report.sh
+ - make clean-all
 
 notifications:
  email:
@@ -38,7 +38,7 @@ notifications:
    - ${EMAIL}
   on_success: change
   on_failure: always
- 
+
  slack:
   rooms:
    - secure: bJXAZ2TpgDjPuMu7MvHocI64I6ta3zI/2zEifNvOdKr+rHlydessjuvoxqQWz+aCOZeuAALK47xukoHIfJVfs445xlp1MxoZICzjJjubsd6jHioSwJlExPJMsieBoZEBZtBnARApd1NNCiYrgHYCu+klKFCp9KuGMDTxNssePrSggNcQJLXbt2amgHoyzpKhbXZqgXex5BZdBCw4N8xE79Q8mU5YcuP4JYFA/vydz5J+CLNL0h3DooTrNy3HYL+3a37CFe/B2l0rSbGMsFmQpsdOMF9f5Pf6qrg+245LDoVbZ8Y9/zlFaISGM6y+g6XMP+Q1hEdVCjDclkx3/sCVX+vn2DIO7qR6KSLg3vH43dGtE0ckrO9O8+A0l4iCKvl1VAd9PYHBgwOaqgHn9/13KO1sCzGXHJ51RGxs5bjsTvd1rqn9oaJNy+HKU8NpX/X7rEN6Nf4ivqyryfgftTzxUYL1/tZ8+jHQJ+XFlpZc2+8dX/gkQGdoHUobHD39mjRAo17qcupbFOXt6fGnXn9FL6IfIi9X2s6GJJRqGtrPdPpqeSSWs2PnNQqQHZeYvoUxMaeuGEPdewmxY7/5fPVwTcKYWQ81eqTOo0vEN2jZ+y6BiEqjh9RvwoJSTChBCi3wcTowxbyq2ClbzCrRSgnhaleMGl2XDgjpr/TzJyurzmw=
