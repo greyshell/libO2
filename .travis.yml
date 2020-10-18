@@ -1,3 +1,6 @@
+# author: greyshell
+# description: travis pipeline for unittest, afl-fuzzing, cppcheck
+
 language: c
 
 jobs:
@@ -26,10 +29,10 @@ after script:
 
 notifications:
  email:
- recipients:
+  recipients:
   - ${EMAIL}
- on_success: change
- on_failure: always
+  on_success: change
+  on_failure: always
  
  slack:
   rooms:
