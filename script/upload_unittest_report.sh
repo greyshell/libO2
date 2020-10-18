@@ -8,7 +8,7 @@ if [ $FAILED_CASES -gt 0 ]
 then
   # upload the report to #dev-lib02
   curl -XPOST --data "payload={\"text\": \"> *Unittest* report for \`${TEST_LIB}\`: \
-   $(pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
+   $(cat test/debug/${TEST_LIB}/unittest_build/results/test_${TEST_LIB}.txt | pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
   exit $FAILED_CASES
 fi
 exit $FAILED_CASES
