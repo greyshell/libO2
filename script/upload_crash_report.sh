@@ -7,11 +7,10 @@ FAILED_CASES=$(find test/debug/${TEST_LIB}/fuzz_build/ -iname "id*" | grep ".*/c
 if [ $FAILED_CASES -gt 0 ]
 then
   # upload the report to #dev-lib02
-  for f in $(find test/make_build_debug/fuzz/${TEST_LIB}/ -iname "id*" | grep ".*/crashes/*")
+  for f in $(find test/debug/${TEST_LIB}/fuzz_build/ -iname "id*" | grep ".*/crashes/*")
     do
-      curl -XPOST --data "payload={\"text\": \"> *Crash* found in \`${TEST_LIB}\`: $(xxd $f | \
-        pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
+      curl -XPOST --data "payload={\"text\": \"> :bomb: *Crash* found in \`${TEST_LIB}\`. \n> Report: $(xxd $f | pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
     done
-  exit 0
+  exit $FAILED_CASES
 fi
 exit $FAILED_CASES

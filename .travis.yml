@@ -19,12 +19,10 @@ before_script:
 
 script:
 - make test TEST_LIB=${TEST_LIB}; script/upload_unittest_report.sh
-- make fuzz TEST_LIB=${TEST_LIB}> /dev/null; find test/debug/${TEST_LIB}/fuzz/ -iname \
-    "id*" | grep ".*/crashes/*"; script/upload_crash_report.sh
+- make fuzz TEST_LIB=${TEST_LIB}> /dev/null; script/upload_crash_report.sh
 
 after script:
-- make cppcheck TEST_LIB=${TEST_LIB}; cat test/debug/${TEST_LIB}/cppcheck_report_${TEST_LIB}.txt;
-  script/upload_cppcheck_report.sh
+- make cppcheck TEST_LIB=${TEST_LIB}; script/upload_cppcheck_report.sh
 - make clean-all
 
 notifications:
