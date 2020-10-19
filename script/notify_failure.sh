@@ -3,5 +3,5 @@
 # author: greyshell
 # description: notify the test FAIL message
 
-curl -XPOST --data "payload={\"text\": \"> :x: \`${TEST_LIB}\` :arrow_right: *FAILED* \"}" $SLACK_WEBHOOK_URL
+curl -XPOST --data "payload={\"text\": \"> :x: Test Status for \`${TEST_LIB}\`: *FAILED* \"}" $SLACK_WEBHOOK_URL
 
