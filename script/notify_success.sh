@@ -3,5 +3,5 @@
 # author: greyshell
 # description: notify the test PASS message
 
-curl -XPOST --data "payload={\"text\": \"> :white_check_mark: Test Status for \`${TEST_LIB}\`: *PASSED* \"}" $SLACK_WEBHOOK_URL
+curl -XPOST --data "payload={\"text\": \"> :speaking_head_in_silhouette: Test Status for \`${TEST_LIB}\` lib: :white_check_mark: \"}" $SLACK_WEBHOOK_URL
 
