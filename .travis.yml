@@ -17,7 +17,7 @@ install:
   - sudo .travis/install_unity.sh
 
 before_script:
-  - skip
+  - script/notify_build_info.sh
 
 script:
   - make test TEST_LIB=${TEST_LIB}; script/upload_unittest_report.sh
