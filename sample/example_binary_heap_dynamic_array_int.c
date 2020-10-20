@@ -13,13 +13,22 @@ int main(void) {
     int out_data = 0;
     size_t heap_size;
     bool return_type;
+    int test_arr[] = {5, 7, 70, 3, 1};
 
     heap h;
 
-    // initialize the queue
-    printf("create the heap \n");
+    printf("create & initialize the heap \n");
     initialize_heap(&h, 1, true);
     printf("heap capacity: %zu \n", h.current_capacity);
+
+    // test heap_sort
+    heap_sort(test_arr, 5, true);
+
+    printf("sorted array: \n");
+    for (int i = 0; i < 5; i++){
+        printf("%d ", test_arr[i]);
+    }
+    printf("\n");
 
     push_heap(&h, 4);
     push_heap(&h, 2);

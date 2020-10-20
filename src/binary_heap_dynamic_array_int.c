@@ -381,3 +381,38 @@ bool build_heap(heap *h, bool type, int *arr, size_t n) {
     }
     return true;
 }
+
+static void _swap(int *a, int *b) {
+    /*
+     * time complexity: O(1) | space complexity: O(1)
+     */
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void heap_sort(int *arr, size_t n, bool sort_type) {
+    /*
+     * use auxiliary data structure: max heap, sort_type: true -> asc
+     * in-place sorting
+     * time complexity: O(n*log(n))
+     * space complexity: O(1)
+     */
+    size_t i;
+    heap h;
+
+    if (arr == NULL) {
+        return;
+    }
+
+    // build the heap: O(log(n))
+    build_heap(&h, sort_type, arr, n);
+
+    for (i = n - 1; i > 0; i--) {
+        _swap(&arr[0], &arr[i]);
+        h.size--;
+        heapify_down(&h, 0);
+    }
+    delete_heap(&h);
+}

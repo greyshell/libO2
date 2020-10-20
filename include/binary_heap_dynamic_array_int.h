@@ -36,7 +36,6 @@ void display_heap(heap *);
 
 bool build_heap(heap *, bool, int *, size_t);
 
-// exposing heapify_down() for heap_sort() defined in sorting/sort.c
-void heapify_down(heap *, size_t);
+void heap_sort(int *, size_t, bool);
 
 #endif
