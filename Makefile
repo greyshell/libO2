@@ -1,5 +1,5 @@
-TEST_LIB=dumb_example
-FUZZ_TIME=10s
+TEST_LIB=stack_singly_linkedlist_int
+FUZZ_TIME=5s
 
 PATHU = lib/Unity/src/
 PATHS = src/
