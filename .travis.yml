@@ -17,7 +17,7 @@ install:
   - sudo .travis/install_unity.sh
 
 before_script:
-  - script/notify_build_info.sh
+  - .travis/notify_build_info.sh
 
 script:
   - make test TEST_LIB=${TEST_LIB}; .travis/upload_unittest_report.sh
@@ -30,7 +30,7 @@ after_failure:
   - .travis/notify_failure.sh
 
 after script:
-  - make cppcheck TEST_LIB=${TEST_LIB}; script/upload_cppcheck_report.sh
+  - make cppcheck TEST_LIB=${TEST_LIB}; .travis/upload_cppcheck_report.sh
   - make clean-all
 
 notifications:
