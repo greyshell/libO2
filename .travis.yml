@@ -20,14 +20,14 @@ before_script:
   - script/notify_build_info.sh
 
 script:
-  - make test TEST_LIB=${TEST_LIB}; script/upload_unittest_report.sh
-  - make fuzz TEST_LIB=${TEST_LIB}> /dev/null; script/upload_crash_report.sh
+  - make test TEST_LIB=${TEST_LIB}; .travis/upload_unittest_report.sh
+  - make fuzz TEST_LIB=${TEST_LIB}> /dev/null; .travis/upload_crash_report.sh
 
 after_success:
-  - script/notify_success.sh
+  - .travis/notify_success.sh
 
 after_failure:
-  - script/notify_failure.sh
+  - .travis/notify_failure.sh
 
 after script:
   - make cppcheck TEST_LIB=${TEST_LIB}; script/upload_cppcheck_report.sh
