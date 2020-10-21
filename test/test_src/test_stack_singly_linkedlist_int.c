@@ -4,8 +4,8 @@
  * */
 
 #include <string.h>
-#include "../lib/Unity/src/unity.h"
-#include "../include/stack_singly_linkedlist_int.h"
+#include "../../lib/Unity/src/unity.h"
+#include "../../include/stack_singly_linkedlist_int.h"
 
 // create the data structure
 stack s;

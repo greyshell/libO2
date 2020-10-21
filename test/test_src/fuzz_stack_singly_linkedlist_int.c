@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <string.h>
-#include "../include/stack_singly_linkedlist_int.h"
+#include "../../include/stack_singly_linkedlist_int.h"
 
 // helper functions for fuzzing
 void readn(void *s, int n) {

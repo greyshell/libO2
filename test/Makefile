@@ -1,18 +1,17 @@
 TEST_LIB=stack_singly_linkedlist_int
 FUZZ_TIME=5s
 
-PATHU = lib/Unity/src/
-PATHS = src/
-PATHT = test/
-DEBUG_ROOT = $(PATHT)/debug/
+PATHU = ../lib/Unity/src/
+PATHS = ../src/
+PATHT = test_src/
+DEBUG_ROOT = test_build/
 
 PATH_DEBUG = $(DEBUG_ROOT)$(TEST_LIB)/
-PATH_FUZZ = $(PATH_DEBUG)/fuzz_build/
-PATHB = $(PATH_DEBUG)/unittest_build/
+PATH_FUZZ = $(PATH_DEBUG)/fuzz/
+PATHB = $(PATH_DEBUG)/unittest/
 PATHD = $(PATHB)/depends/
 PATHO = $(PATHB)/objs/
 PATHR = $(PATHB)/results/
-
 
 BUILD_PATHS = $(DEBUG_ROOT) $(PATH_DEBUG) $(PATHB) $(PATHD) $(PATHO) $(PATHR) $(PATH_FUZZ)
 
@@ -35,11 +34,10 @@ PASSED = `grep -s PASS $(PATHR)*.txt`
 FAIL = `grep -s FAIL $(PATHR)*.txt`
 IGNORE = `grep -s IGNORE $(PATHR)*.txt`
 
-
 .PHONY: clean
 .PHONY: test
 
-test-all: cppcheck test fuzz
+all: cppcheck test fuzz
 
 test: $(BUILD_PATHS) $(RESULTS)
 	@echo "-----------------------\nIGNORES:\n-----------------------"
