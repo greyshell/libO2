@@ -26,7 +26,7 @@ Navigate into the `build` directory and create the build environment.
     $ cd libO2/build/
     $ cmake ..
 
-Install the library. 
+Install the `libO2` library. 
 
     $ make install
 
@@ -36,6 +36,10 @@ Under the hood, it copies `.so` files into `/usr/local/lib/` directory and `.h` 
 Reload / cache the shared libraries.
 
     $ ldconfig
+
+Uninstall the `libO2` library. 
+
+    $ ./script/uninstall_lib.sh 
 
 ## Usage
 
