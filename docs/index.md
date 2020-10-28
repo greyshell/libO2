@@ -37,15 +37,15 @@ Reload / cache the shared libraries.
 
     $ ldconfig
 
-## How to use the library
+## Usage
 
 Write a sample program like `sample/demo_stack_singly_linkedlist_int.c`
 
 Compile the code with `gcc`.
 
-    $ gcc -Wall -o demo demo_stack_singly_linkedlist_int.c -lO2
+    $ gcc -Wall -o demo_stack demo_stack_singly_linkedlist_int.c -lO2
 
 
 Run the binary.
 
-    $ ./demo
+    $ ./demo_stack

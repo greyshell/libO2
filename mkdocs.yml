@@ -1,5 +1,7 @@
 site_name: libO2
 nav:
   - Quickstart: index.md
-  - About: about.md
+  - API Documentation:
+      - stack_singly_linkedlist_int: stack_singly_linkedlist_int.md
+      - queue_singly_linkedlist_int: queue_singly_linkedlist_int.md
 theme: readthedocs

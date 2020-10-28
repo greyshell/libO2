@@ -1,6 +1,6 @@
 /*
  * author: greyshell
- * description: singly linked list based implementation of stack, data_arr: int
+ * description: singly linked list based implementation of stack, data type: int
  * */
 
 #include <stdio.h>
@@ -101,7 +101,7 @@ bool peek(stack *s, int *out_data) {
 bool delete_stack(stack *s) {
     /*
      * delete the stack
-     * time complexity: O(1)
+     * time complexity: O(n)
      * space complexity: O(1)
      */
     bool return_type;
