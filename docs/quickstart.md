@@ -8,7 +8,6 @@ A quick guide for installing and using [libO2](https://github.com/greyshell/libO
 Clone the `git` repository.
 
     $ git clone https://github.com/greyshell/libO2.git
-    $ cd libO2/
 
 Install the following dependencies:
 

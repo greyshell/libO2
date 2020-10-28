@@ -1,6 +1,6 @@
 site_name: libO2
 nav:
-  - Quickstart: index.md
+  - Quickstart: quickstart.md
   - API Documentation:
       - stack_singly_linkedlist_int: stack_singly_linkedlist_int.md
       - queue_singly_linkedlist_int: queue_singly_linkedlist_int.md
