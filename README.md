@@ -6,17 +6,7 @@
 
 A library of common data structures written in C.
 
-### How to install
-```
-mkdir build && cd build
-cmake ..
-make install
-ldconfig
-```
+## Documentation
 
-### How to use
-```
-cd sample/
-gcc -Wall -o demo_stack_singly_linkedlist_int demo_stack_singly_linkedlist_int.c -lO2
-./demo_stack_singly_linkedlist_int
+The complete documentation is [here](https://libo2.readthedocs.io/).
 ```
