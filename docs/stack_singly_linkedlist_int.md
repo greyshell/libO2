@@ -1,5 +1,11 @@
-# stack_singly_linkedlist_int API
+# stack_singly_linkedlist_int
 
+## Key Features
+
+- Singly linked list based `stack` implementation.
+- Supported data type: `int`.
+
+## API Details
 
 Sl No | APIs                             | Time | Space | Usage
 ------|----------------------------------|------|-------|-----------------------------------------------------------------------------------

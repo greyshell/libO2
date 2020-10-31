@@ -1,7 +1,12 @@
 site_name: libO2
 nav:
   - Quickstart: index.md
+  - Test Guideline:
+      - How to run unittest: guideline_unittest.md
+      - How to fuzz: guideline_fuzz.md
+      - SCA using cppcheck: guideline_cppcheck.md
   - API Documentation:
       - stack_singly_linkedlist_int: stack_singly_linkedlist_int.md
       - queue_singly_linkedlist_int: queue_singly_linkedlist_int.md
+
 theme: material

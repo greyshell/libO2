@@ -1,54 +1,63 @@
 # Quickstart
+[libO2](https://github.com/greyshell/libO2) is a collection of common `data structures` written in `C`
 
-A quick guide for installing and using [libO2](https://github.com/greyshell/libO2).
+## How to install
 
+- Clone the `git` repository.
+```
+git clone https://github.com/greyshell/libO2.git
+```
 
-## Installation
+- Install the following dependencies:
+    - [gcc](https://gcc.gnu.org/) version 9.2.1 or above
+    - [cmake](https://cmake.org/) version 3.16.3 or above
+    - [Unity](http://www.throwtheswitch.org/unity) is not required to use the library. You will need
+     to install it if you wish to run the `unittests`.
 
-Clone the `git` repository.
+- Create the `build` directory under the parent directory (i.e. `libO2`).
+```
+mkdir libO2/build
+```
 
-    $ git clone https://github.com/greyshell/libO2.git
+- Navigate to the `build` directory and create the `build environment`.
+```
+cd libO2/build/
+cmake ..
+```
 
-Install the following dependencies:
+- Install the `libO2` library. 
+```
+make install
+```
 
-- [gcc](https://gcc.gnu.org/) version 9.2.1 or above
-- [cmake](https://cmake.org/) version 3.16.3 or above
-
-[Unity](http://www.throwtheswitch.org/unity) is not required to use the library. You will need
- to install it if you wish to run the unittests.
-
-Create the `build` directory under the parent(i.e. `libO2`) directory.
-
-    $ mkdir libO2/build
-
-Navigate into the `build` directory and create the build environment.
-
-    $ cd libO2/build/
-    $ cmake ..
-
-Install the `libO2` library. 
-
-    $ make install
-
-Under the hood, it copies `.so` files into `/usr/local/lib/` directory and `.h` files into `/usr
+> Under the hood, it copies `.so` files into `/usr/local/lib/` directory and `.h` files into `/usr
 /local/include/` directory.
 
-Reload / cache the shared libraries.
+- Reload / cache newly installed shared libraries.
+```
+ldconfig
+```
 
-    $ ldconfig
+## How to use
 
-Uninstall the `libO2` library. 
+- Write a sample program like `sample/demo_stack_singly_linkedlist_int.c`
 
-    $ ./script/uninstall_lib.sh 
+- Compile the code with `gcc`.
+```
+gcc -Wall -o demo_stack demo_stack_singly_linkedlist_int.c -lO2
+```
 
-## Usage
+- Run the binary.
+```
+./demo_stack
+```
 
-Write a sample program like `sample/demo_stack_singly_linkedlist_int.c`
+## How to uninstall
 
-Compile the code with `gcc`.
+Removes all `.so` files from `/usr/local/lib/` directory and `.h` files from `/usr
+/local/include/` directory.
+```
+cd script/ 
+sudo ./uninstall_lib.sh 
+```
 
-    $ gcc -Wall -o demo_stack demo_stack_singly_linkedlist_int.c -lO2
-
-Run the binary.
-
-    $ ./demo_stack

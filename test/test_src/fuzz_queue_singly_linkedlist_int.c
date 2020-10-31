@@ -8,7 +8,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <string.h>
-#include "../../include/stack_singly_linkedlist_int.h"
+#include "../../include/queue_singly_linkedlist_int.h"
 
 /*
  * =======================================================
@@ -72,15 +72,15 @@ int main(void) {
     int data, out_data = 0;
     size_t choice, stack_size;
     bool return_type;
-    stack s;
+    queue q;
     uint8_t number_operations;
     uint8_t operation_type;
 
     // nos of functions / operations to test
-    size_t ops_count = 4;
+    size_t ops_count = 5;
     ops_count = ops_count + 1;  // as the case starts from 0
     // initialize
-    initialize_stack(&s);
+    initialize_queue(&q);
 
     // randomize the nos of operations and get the input through fuzzer
     number_operations = read8();
@@ -92,40 +92,49 @@ int main(void) {
         switch (operation_type % ops_count) {
             case 0:
                 data = read_int();
-                printf("operation: push, data: %d \n", data);
-                return_type = push(&s, data);
+                printf("operation: enqueue, data: %d \n", data);
+                return_type = enqueue(&q, data);
                 if (return_type == true) {
-                    printf("pushed \n");
+                    printf("enqueued \n");
                 } else {
-                    printf("unable to push \n");
+                    printf("unable to enqueue \n");
                 }
                 break;
             case 1:
-                printf("operation: pop \n");
-                return_type = pop(&s, &out_data);
+                printf("operation: dequeue \n");
+                return_type = dequeue(&q, &out_data);
                 if (return_type == true) {
-                    printf("stack top has %d \n", out_data);
+                    printf("dequeued %d \n", out_data);
                 } else {
-                    printf("unable to pop \n");
+                    printf("unable to dequeue \n");
                 }
                 break;
             case 2:
-                printf("operation: peek \n");
-                return_type = peek(&s, &out_data);
+                printf("operation: peek at front \n");
+                return_type = peek_at_front(&q, &out_data);
                 if (return_type == true) {
-                    printf("peek at top: %d \n", out_data);
+                    printf("peek at front: %d \n", out_data);
                 } else {
-                    printf("unable to peek \n");
+                    printf("unable to peek at front \n");
                 }
                 break;
             case 3:
-                printf("operation: get_stack_size \n");
-                stack_size = get_stack_size(&s);
-                printf("stack size: %zu \n", stack_size);
+                printf("operation: peek at rear \n");
+                return_type = peek_at_rear(&q, &out_data);
+                if (return_type == true) {
+                    printf("peek at rear: %d \n", out_data);
+                } else {
+                    printf("unable to peek at rear \n");
+                }
                 break;
             case 4:
-                printf("operation: is_empty_stack \n");
-                return_type = is_empty_stack(&s);
+                printf("operation: get_stack_size \n");
+                stack_size = get_queue_size(&q);
+                printf("queue size: %zu \n", stack_size);
+                break;
+            case 5:
+                printf("operation: is_empty_queue \n");
+                return_type = is_empty_queue(&q);
                 printf("is empty: %d \n", return_type);
                 break;
             default:
@@ -134,7 +143,6 @@ int main(void) {
         }
     }
     // delete the ADT
-    delete_stack(&s);
-
+    delete_queue(&q);
     return 0;
 }
