@@ -9,7 +9,7 @@ then
   # upload the report to #dev-lib02
   for f in $(find test/test_build/${TEST_LIB}/fuzz/ -iname "id*" | grep ".*/crashes/*")
     do
-      curl -XPOST --data "payload={\"text\": \"> :speaking_head_in_silhouette: Crash :bomb: found in \`${TEST_LIB}\` lib \n> Report: $(xxd $f | pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
+      curl -XPOST --data "payload={\"text\": \"> :bomb: Crash found in **${TEST_LIB}**  \n> Report: $(xxd $f | pastebinit -b  https://paste.ubuntu.com)\"}" $SLACK_WEBHOOK_URL
     done
   exit $FAILED_CASES
 fi
