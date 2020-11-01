@@ -12,18 +12,18 @@ git clone https://github.com/greyshell/libO2.git
     - [gcc](https://gcc.gnu.org/) version 9.2.1 or above
     - [cmake](https://cmake.org/) version 3.16.3 or above
 
-- Create the `build` directory under the parent directory (i.e. `libO2`).
+- Create the `build` directory.
 ```
-mkdir libO2/build
+mkdir build/
 ```
 
-- Navigate to the `build` directory and create the `build environment`.
+- Navigate to the `build` directory and create the `build environment` via `cmake`.
 ```
-cd libO2/build/
+cd build/
 cmake ..
 ```
 
-- Install the `libO2` library. 
+- Install the library. 
 ```
 make install
 ```
