@@ -22,7 +22,7 @@ before_script:
 
 script:
   - make test TEST_LIB=${TEST_LIB}; .travis/upload_unittest_report.sh
-  - make fuzz TEST_LIB=${TEST_LIB} FUZZ_TIME=10m > /dev/null; .travis/upload_crash_report.sh
+  - make fuzz TEST_LIB=${TEST_LIB} FUZZ_TIME=10s > /dev/null; .travis/upload_crash_report.sh
 
 after_success:
   - .travis/notify_success.sh

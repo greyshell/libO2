@@ -20,7 +20,7 @@ void tearDown(void) {
     delete_stack(&s);
 }
 
-void test_positive_case01(void){
+void test_case01(void){
     /*
      * test ops: push -> push -> peek
      */
@@ -32,7 +32,7 @@ void test_positive_case01(void){
     TEST_ASSERT_EQUAL_INT(90, out_data);
 }
 
-void test_positive_case02(void){
+void test_case02(void){
     /*
      * test ops: push -> push -> push -> pop -> peek
      */
@@ -47,7 +47,7 @@ void test_positive_case02(void){
     TEST_ASSERT_EQUAL_INT(90, out_data);
 }
 
-void test_positive_case03(void){
+void test_case03(void){
     /*
      * test ops: get_stack_size -> push -> push -> get_stack_size -> pop -> get_stack_size
      */
@@ -62,7 +62,7 @@ void test_positive_case03(void){
 
 }
 
-void test_negative_case01(void) {
+void test_case04(void) {
     /*
      * test ops: peek -> pop
      */
@@ -73,7 +73,7 @@ void test_negative_case01(void) {
     TEST_ASSERT_EQUAL_INT(0, out_data);
 }
 
-void test_negative_case02(void) {
+void test_case05(void) {
     /*
      * test ops: pop -> peek
      */
@@ -86,11 +86,10 @@ void test_negative_case02(void) {
 
 int main(void){
     UNITY_BEGIN();
-    RUN_TEST(test_positive_case01);
-    RUN_TEST(test_positive_case02);
-    RUN_TEST(test_positive_case03);
-
-    RUN_TEST(test_negative_case01);
-    RUN_TEST(test_negative_case02);
+    RUN_TEST(test_case01);
+    RUN_TEST(test_case02);
+    RUN_TEST(test_case03);
+    RUN_TEST(test_case04);
+    RUN_TEST(test_case05);
     return UNITY_END();
 }
