@@ -2,8 +2,6 @@
 
 You can `fuzz` the library using `afl` fuzzer.
 
-Steps:
-
 - Install the `afl` fuzzer.
 ```
 wget https://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz && tar xvf afl-latest.tgz

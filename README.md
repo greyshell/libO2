@@ -9,3 +9,7 @@ A library of common data structures written in `C`.
 ## Documentation
 
 The complete documentation is [here](https://libo2.readthedocs.io/).
+
+## CI Workflow
+
+![libO2-workflow](.assets/libO2_ci.png)

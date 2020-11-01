@@ -2,9 +2,7 @@
 
 You can run the `unittest` in your local system.
 
-Steps:
-
-- Create a directory - `lib/` and install `Unity`.
+- Create a directory - `lib/` and install [Unity](http://www.throwtheswitch.org/unity).
 ```
 mkdir lib
 git clone https://github.com/ThrowTheSwitch/Unity.git lib/
@@ -20,7 +18,8 @@ make test TEST_LIB=stack_singly_linkedlist_int
 ```
 - It creates `test/test_build/<lib_name>/unittest/` directory and saves all test related
  artifacts over there.
- - Clean the test artifacts
+
+- Clean the test artifacts
 ```
 make clean TEST_LIB=stack_singly_linkedlist_int
 ```
