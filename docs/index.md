@@ -1,4 +1,5 @@
 # Quickstart
+
 [libO2](https://github.com/greyshell/libO2) is a collection of common `data structures` written in `C`
 
 ## How to install
