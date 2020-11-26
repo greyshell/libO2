@@ -169,7 +169,7 @@ static void _heapify_up(heap *h, size_t n) {
     }
 }
 
-void heapify_down(heap *h, size_t index) {
+static void _heapify_down(heap *h, size_t index) {
     /*
      * top down heapify / bubbling down
      * time complexity: O(log(n))
@@ -306,7 +306,7 @@ bool pop_heap(heap *h, int *out_data) {
     *out_data = h->data_arr[0];
     h->data_arr[0] = h->data_arr[h->size - 1];
     h->size--;
-    heapify_down(h, 0);
+    _heapify_down(h, 0);
 
     if (h->size < h->current_capacity / 2) {
         return_type = _halving_heap(h);
@@ -372,7 +372,7 @@ bool build_heap(heap *h, bool type, int *arr, size_t n) {
     // start from the last level left most element and iterate to root
     // scanning from right to left, bottom to top
     for (i = (n - 1) / 2;; i--) {
-        heapify_down(h, i);
+        _heapify_down(h, i);
         // i -> unsigned, integer overflow causes infinite loop
         // stop the heapify_down process and break out from loop when i = root
         if (i == 0) {
@@ -396,7 +396,7 @@ void heap_sort(int *arr, size_t n, bool sort_type) {
     /*
      * use auxiliary data structure: max heap, sort_type: true -> asc
      * in-place sorting
-     * time complexity: O(n*log(n))
+     * time complexity: O(n + n*log(n))
      * space complexity: O(1)
      */
     size_t i;
@@ -406,13 +406,14 @@ void heap_sort(int *arr, size_t n, bool sort_type) {
         return;
     }
 
-    // build the heap: O(log(n))
+    // build the heap: O(n)
     build_heap(&h, sort_type, arr, n);
 
     for (i = n - 1; i > 0; i--) {
         _swap(&arr[0], &arr[i]);
         h.size--;
-        heapify_down(&h, 0);
+        // time complexity: O(log(n))
+        _heapify_down(&h, 0);
     }
     delete_heap(&h);
 }
