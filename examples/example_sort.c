@@ -35,16 +35,16 @@ void test_cocktail_sort(int *arr, int *temp_array, size_t n) {
     display_array(arr, n);
 }
 
-void test_heap_sort(int arr[], int *temp_array, size_t n) {
-    bool sort_type = true;
-    array_copy(arr, temp_array, n);
-    printf("original array: \n");
-    display_array(arr, n);
-    printf("\n");
-    heap_sort(arr, n, sort_type); // sort_type = false -> desc | true -> asc
-    printf("after heap sort: \n");
-    display_array(arr, n);
-}
+//void test_heap_sort(int arr[], int *temp_array, size_t n) {
+//    bool sort_type = true;
+//    array_copy(arr, temp_array, n);
+//    printf("original array: \n");
+//    display_array(arr, n);
+//    printf("\n");
+//    heap_sort(arr, n, sort_type); // sort_type = false -> desc | true -> asc
+//    printf("after heap sort: \n");
+//    display_array(arr, n);
+//}
 
 void test_counting_sort(int arr[], int *temp_array, size_t n) {
     array_copy(arr, temp_array, n);
