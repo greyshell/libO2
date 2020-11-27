@@ -7,6 +7,8 @@ jobs:
   include:
     - env: TEST_LIB=stack_singly_linkedlist_int
     - env: TEST_LIB=queue_singly_linkedlist_int
+    - env: TEST_LIB=binary_heap_dynamic_array_int
+    - env: TEST_LIB=sort
 
 before_install:
   - skip
