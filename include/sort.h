@@ -5,8 +5,6 @@
 #ifndef SORT_H__
 #define SORT_H__
 
-#include <z3.h>
-
 void display_array(int *arr, size_t n);
 
 void bubble_sort(int *, size_t);
