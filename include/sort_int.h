@@ -2,8 +2,8 @@
  * author: greyshell
  * */
 
-#ifndef SORT_H__
-#define SORT_H__
+#ifndef SORT__INT_H__
+#define SORT_INT_H__
 
 void display_array(int *arr, size_t n);
 
@@ -23,4 +23,4 @@ void merge_sort(int *, int);
 
 void counting_sort(int *, int *, size_t);
 
-#endif // _SORT_H__
+#endif // _SORT_INT_H__

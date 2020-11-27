@@ -5,7 +5,7 @@
 
 #include <string.h>
 #include "../../lib/Unity/src/unity.h"
-#include "../../include/sort.h"
+#include "../../include/sort_int.h"
 
 # define ARRAY_SIZE 10
 

@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <z3.h>
-#include "../include/sort.h"
+#include "../include/sort_int.h"
 
 static void _swap(int *a, int *b) {
     /*

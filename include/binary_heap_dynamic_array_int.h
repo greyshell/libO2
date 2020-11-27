@@ -24,9 +24,9 @@ bool is_empty_heap(heap *);
 
 bool get_heap_size(heap *, size_t *);
 
-bool push_heap(heap *, int data);
+bool push_heap(heap *, int);
 
-bool pop_heap(heap *, int *out_data);
+bool pop_heap(heap *, int *);
 
 bool peek_heap(heap *, int *);
 
