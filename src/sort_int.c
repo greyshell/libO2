@@ -8,6 +8,11 @@
 #include <z3.h>
 #include "../include/sort_int.h"
 
+/*
+ * =========================================================================
+ *                          HELPER FUNCTIONS
+ * =========================================================================
+ */
 static void _swap(int *a, int *b) {
     /*
      * time complexity: O(1) | space complexity: O(1)
@@ -48,7 +53,14 @@ void display_array(int *arr, size_t n) {
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
+    printf("\n");
 }
+
+/*
+ * =========================================================================
+ *                          BUBBLE SORT
+ * =========================================================================
+ */
 
 void bubble_sort(int *arr, size_t n) {
     /*
@@ -125,6 +137,12 @@ void bubble_sort(int *arr, size_t n) {
     }
 }
 
+/*
+ * =========================================================================
+ *                          COCKTAIL SORT
+ * =========================================================================
+ */
+
 void cocktail_sort(int *arr, size_t n) {
     /*
      * property:
@@ -177,6 +195,12 @@ void cocktail_sort(int *arr, size_t n) {
         right_index--;
     }
 }
+
+/*
+ * =========================================================================
+ *                          COUNTING SORT
+ * =========================================================================
+ */
 
 void counting_sort(int *arr, int *output_arr, size_t n) {
     /*
@@ -233,5 +257,99 @@ void counting_sort(int *arr, int *output_arr, size_t n) {
         output_arr[auxiliary_array[arr[i] - min]] = arr[i];
         auxiliary_array[arr[i] - min]--;
     }
+}
 
+/*
+ * =========================================================================
+ *                          QUICK SORT
+ * =========================================================================
+ */
+
+static size_t _partition(int *arr, int left_index, int right_index) {
+    /*
+     * what is a pivot: an item that we want to find its home / final position in the partitioned
+     * space / sorted array.
+     * it can be any item but the we consider best pivot is the median of the array.
+     *
+     * partition() function splits the array in two halves:
+     * items_less_than_pivot | pivot | items_greater_than_pivot
+     * partition() return the final index of the pivot element.
+     * so whenever the partition() is called, it sorts one element and that is the pivot element
+     * */
+
+    // select the last element as pivot
+    int pivot = arr[right_index];
+    // i variable will keep track of the "tail" of the section of items less than the pivot so that
+    // at the end we can "sandwich" the pivot between the section less than it and
+    // the section greater than it
+    int i = left_index - 1;
+
+    // scan from the left boundary to item before the right boundary or the pivot element
+    int j;
+
+    for (j = left_index; j < right_index; j++) {
+        // if this item is less than the pivot then it needs to be moved to the section of items less than the pivot
+        if (arr[j] <= pivot) {
+            // move i forward so that we can swap the value at j into the tail of the items less than the pivot
+            i++;
+            _swap(&arr[i], &arr[j]);
+        }
+    }
+    // after loop iteration, i points to the last the swapped element that is less than the pivot
+    // at this point, (i + 1) -> element is greater than the pivot
+    // swap the pivot / the last element with the (i + 1) so that it creates the desired partition
+    // items less than pivot | pivot | items greater than pivot
+    _swap(&arr[i + 1], &arr[right_index]);
+    // return the pivot's actual position in the sorted array
+    return i + 1;
+}
+
+static void _quick_sort_core_recursive_engine(int *arr, size_t left_index, size_t right_index) {
+    /*
+     * property:
+     * =========
+     * - recursive implementation
+     * - divide rule: split the array in left and right halves based on the index of the pivot
+     * element returned by the partition() function. pivots always gets it's final resting position.
+     * - conquer rule: sort the left and right half of the array through recursion.
+     *
+     * time complexity:
+     * ================
+     * best case scenario:
+     *  - pivot element is chosen is such a way that splits the array into
+     *  two equal halves every time.
+     *  - O(n*log(n))
+     *
+     *  worst case scenario:
+     *  - O(n**2), if every time the pivot is chosen is such a way that splits
+     *  the array in 1:n-1 or n-1:1 ratio.
+     *
+     *  average / expected case scenario:
+     *  - O(n*log(n)) for randomized version, where the pivot element is selected randomly.
+     *
+     * space complexity:
+     * =================
+     * worst case scenario:
+     * - O(1), in-memory sorting, no extra space is required.
+     * */
+    size_t pivot_final_resting_position;
+
+    // this if block will not execute when the array is empty or 1 element
+    // due to recursive call,
+    if (left_index < right_index) {
+        // case 1: when array has more than 1 element
+        // partition the array into 2 halves
+        // partition() function returns the actual home of the selected pivot in the sorted array
+        pivot_final_resting_position = _partition(arr, left_index, right_index);
+
+        if (pivot_final_resting_position > 0) {
+            _quick_sort_core_recursive_engine(arr, left_index, pivot_final_resting_position - 1);
+        }
+
+        _quick_sort_core_recursive_engine(arr, pivot_final_resting_position + 1, right_index);
+    }
+}
+
+void quick_sort(int *arr, size_t n) {
+    _quick_sort_core_recursive_engine(arr, 0, n - 1);
 }
