@@ -29,10 +29,10 @@ cmake ..
 sudo make install
 ```
 
-> Under the hood, it copies `.so` files into `/usr/local/lib/` directory and `.h` files into `/usr
+> Under the hood, it copies `.so` files inside `/usr/local/lib/` directory and `.h` files inside `/usr
 /local/include/` directory.
 
-- Reload / update the cache with newly installed `shared` library.
+- cache the most recently installed `shared` library.
 ```
 sudo ldconfig
 ```
