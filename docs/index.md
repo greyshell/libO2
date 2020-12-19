@@ -26,7 +26,7 @@ cmake ..
 
 - Install the `libO2` library. 
 ```
-make install
+sudo make install
 ```
 
 > Under the hood, it copies `.so` files into `/usr/local/lib/` directory and `.h` files into `/usr
@@ -34,7 +34,7 @@ make install
 
 - Reload / update the cache with newly installed `shared` library.
 ```
-ldconfig
+sudo ldconfig
 ```
 
 ## How to use

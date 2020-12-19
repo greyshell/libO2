@@ -270,6 +270,7 @@ static size_t _partition(int *arr, int left_index, int right_index) {
      * what is a pivot: an item that we want to find its home / final position in the partitioned
      * space / sorted array.
      * it can be any item but the we consider best pivot is the median of the array.
+     * a bad pivot is a largest / smallest item of the partitioning space.
      *
      * partition() function splits the array in two halves:
      * items_less_than_pivot | pivot | items_greater_than_pivot
@@ -308,10 +309,12 @@ static void _quick_sort_core_recursive_engine(int *arr, size_t left_index, size_
     /*
      * property:
      * =========
-     * - recursive implementation
      * - divide rule: split the array in left and right halves based on the index of the pivot
      * element returned by the partition() function. pivots always gets it's final resting position.
      * - conquer rule: sort the left and right half of the array through recursion.
+     * - in-place sorting
+     * - it is not a stable sort
+     *
      *
      * time complexity:
      * ================
@@ -323,6 +326,7 @@ static void _quick_sort_core_recursive_engine(int *arr, size_t left_index, size_
      *  worst case scenario:
      *  - O(n**2), if every time the pivot is chosen is such a way that splits
      *  the array in 1:n-1 or n-1:1 ratio.
+     *  when the array is sorted / reversely sorted.
      *
      *  average / expected case scenario:
      *  - O(n*log(n)) for randomized version, where the pivot element is selected randomly.
