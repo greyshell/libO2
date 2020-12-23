@@ -1,5 +1,7 @@
 # Quickstart
 
+_Author: greyshell_
+
 [libO2](https://github.com/greyshell/libO2) is a collection of common `data structures` written in `C`
 
 ## How to install
@@ -32,13 +34,14 @@ sudo make install
 > Under the hood, it copies `.so` files inside `/usr/local/lib/` directory and `.h` files inside `/usr
 /local/include/` directory.
 
-- cache the most recently installed `shared` library.
+- Cache the most recently installed `shared` library.
 ```
 sudo ldconfig
 ```
 
 ## How to use
 
+- Review the header files located at `include/` to understand the exposed APIs.
 - Write a sample program like `example_stack.c`
 ```
 /*

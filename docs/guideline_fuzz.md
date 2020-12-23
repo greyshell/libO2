@@ -1,4 +1,6 @@
-## How to fuzz
+# How to fuzz
+
+_Author: greyshell_
 
 You can `fuzz` the library using `afl` fuzzer.
 
@@ -20,7 +22,7 @@ make fuzz TEST_LIB=stack_singly_linkedlist_int FUZZ_TIME=20m
 - It creates `test/test_build/<lib_name>/fuzz/` directory and saves all fuzz related artifacts
  over there.
  
-#### How to reproduce the crash
+## How to reproduce the crash
  
 - `afl` writes all crashes inside `out/crashes/` directory. 
 - Execute the fuzz binary with the test data.

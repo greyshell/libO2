@@ -1,8 +1,12 @@
-## SCA using `cppcheck`
+# Static code analysis
 
-`cppcehck` finds the `security bug` in the source code.
+_Author: greyshell_
 
-## How to use
+## CPPCheck
+
+Scan the code with `cppcehck` to find the `security` bugs.
+
+### How to use
 - Install `cppcehck`.
 ```
 sudo apt-get install cppcheck less  -y

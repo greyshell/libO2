@@ -1,15 +1,10 @@
 site_name: libO2
 nav:
   - Quickstart: index.md
-  - API Documentation:
-      - stack_singly_linkedlist_int: stack_singly_linkedlist_int.md
-      - queue_singly_linkedlist_int: queue_singly_linkedlist_int.md
-      - binary_heap_dynamic_array_int: binary_heap_dynamic_array_int.md
-      - sort_int: sort_int.md
   - Guideline:
       - How to run unittest: guideline_unittest.md
       - How to fuzz: guideline_fuzz.md
-      - SCA using cppcheck: guideline_cppcheck.md
-      - How to create documentation: create_docs_guideline.md
+      - Static code analysis: guideline_sca.md
 
-theme: material
+theme:
+  name: readthedocs
