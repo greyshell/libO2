@@ -1,5 +1,5 @@
 # author: greyshell
-# description: travis pipeline for c_unit_tests, afl-fuzzing and cppcheck
+# description: travis pipeline for unittests, afl-fuzzing and cppcheck
 
 language: c
 

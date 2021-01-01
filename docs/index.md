@@ -4,6 +4,17 @@ _Author: greyshell_
 
 [libO2](https://github.com/greyshell/libO2) is a collection of common `data structures` written in `C`
 
+#### Library support
+
+- stack_singly_linkedlist_int
+- queue_singly_linkedlist_int
+- sort_int
+    - bubble sort
+    - cocktail sort
+    - counting sort
+    - quick sort
+- binary_heap_dynamic_array_int
+
 ## How to install
 
 - Check if you have the following dependencies:
@@ -102,15 +113,17 @@ int main(void) {
     printf("stack size: %d \n", return_type);
 
     // delete the stack
-    delete_stack(&s);
+     return_type = delete_stack(&s);
+     printf("delete stack successful: %d \n", return_type);
 
     return 0;
 }
 ```
+- Get more sample programs from `samples/` directory and make sure to include the proper header file. 
 
 - Compile the code with `gcc`.
 ```
-gcc -Wall -o example_stack example_stack.c -lO2
+gcc -g -Wall -o example_stack example_stack.c -lO2
 ```
 - Run the binary.
 ```

@@ -1,6 +1,6 @@
 /*
  * author: greyshell
- * description: c_unit_tests case
+ * description: unittests case
  * */
 
 #include <string.h>

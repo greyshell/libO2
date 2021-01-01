@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # author: greyshell
-# description: handle the c_unit_tests report, if FAILs then skip the fuzz test
+# description: verify the unittests report, if FAILs then skip the fuzz test
 
 FAILED_CASES=$(grep -w "FAIL:" test/test_build/${TEST_LIB}/unittest/results/test_${TEST_LIB}
 .txt | wc -l)
