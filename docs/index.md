@@ -1,19 +1,6 @@
 # Quickstart
 
-_Author: greyshell_
-
 [libO2](https://github.com/greyshell/libO2) is a collection of common `data structures` written in `C`
-
-#### Library support
-
-- stack_singly_linkedlist_int
-- queue_singly_linkedlist_int
-- sort_int
-    - bubble sort
-    - cocktail sort
-    - counting sort
-    - quick sort
-- binary_heap_dynamic_array_int
 
 ## How to install
 
@@ -42,7 +29,7 @@ cmake ..
 sudo make install
 ```
 
-> Under the hood, it copies `.so` files inside `/usr/local/lib/` directory and `.h` files inside `/usr
+- Under the hood, it copies `.so` files inside `/usr/local/lib/` directory and `.h` files inside `/usr
 /local/include/` directory.
 
 - Cache the most recently installed `shared` library.
@@ -52,7 +39,7 @@ sudo ldconfig
 
 ## How to use
 
-- Review the header files located at `include/` to understand the exposed APIs.
+- Review the header files located at `include/` directory to understand the `exposed` APIs.
 - Write a sample program like `example_stack.c`
 ```
 /*
@@ -119,7 +106,6 @@ int main(void) {
     return 0;
 }
 ```
-- Get more sample programs from `samples/` directory and make sure to include the proper header file. 
 
 - Compile the code with `gcc`.
 ```
@@ -129,6 +115,7 @@ gcc -g -Wall -o example_stack example_stack.c -lO2
 ```
 ./example_stack
 ```
+- Check `samples/` directory for more sample programs. 
 
 ## How to uninstall
 

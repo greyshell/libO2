@@ -1,6 +1,8 @@
 site_name: libO2
 nav:
-  - Quickstart: index.md
+  - General:
+    - Quickstart: index.md
+    - Supported libraries: supported_libraries.md
   - Guideline:
       - How to run unittest: guideline_unittest.md
       - How to fuzz: guideline_fuzz.md

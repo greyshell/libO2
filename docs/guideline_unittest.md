@@ -1,7 +1,5 @@
 # How to run unittest
 
-_Author: greyshell_
-
 You can run the `unittest` in your local system.
 
 - Create a directory - `lib/` and install [Unity](http://www.throwtheswitch.org/unity).

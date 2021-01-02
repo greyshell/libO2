@@ -1,7 +1,5 @@
 # How to fuzz
 
-_Author: greyshell_
-
 You can `fuzz` the library using `afl` fuzzer.
 
 - Install the `afl` fuzzer.

@@ -1,7 +1,5 @@
 # Static code analysis
 
-_Author: greyshell_
-
 ## CPPCheck
 
 Scan the code with `cppcehck` to find the `security` bugs.
