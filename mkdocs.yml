@@ -9,4 +9,4 @@ nav:
       - Static code analysis: guideline_sca.md
 
 theme:
-  name: readthedocs
+  name: slate
